@@ -7,5 +7,6 @@ module.exports = {
         password: '123456',
         database: 'ann',
         port: 3306,
+        connectionLimit: 10,
     }
 }
