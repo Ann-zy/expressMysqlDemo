@@ -1,8 +1,9 @@
 
-import { conMysql } from './mysql'
+// import conMysql from './mysql'
 
 const express = require('express')
 const cors = require('express')
+const { conMysql } = require('./mysql')
 
 const app = express()
 app.use(cors())
@@ -34,8 +35,8 @@ app.get('/test', (req, res, next) => {
 // 一个简单的接口，查询数据库中的所有用户信息
 app.get('/getUser', (req, res, next) => {
     let sql = 'select * from user'
-    conMysql(sql).then((res) => {
-        res.send(sql)
+    conMysql(sql).then((result) => {
+        res.send(result)
     })
 })
 

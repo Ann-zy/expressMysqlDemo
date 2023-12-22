@@ -10,9 +10,9 @@ import 'vant/es/dialog/style';
 
 import { Cell, Button, Field, List, allowMultipleToast, DatePicker, Popup, NumberKeyboard, Stepper, Tab, Tabs, Dialog, Toast } from 'vant';
 
-const pinia = createPinia();
+allowMultipleToast();
 
-Toast.allowMultiple();
+const pinia = createPinia();
 
 createApp(App)
     .use(router)
