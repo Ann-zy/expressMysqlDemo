@@ -1,0 +1,44 @@
+// 避免由于优先级产生问题，封装为mixin而不是直接封装为类名
+@mixin flex-row{
+  display: flex;
+  flex-direction: row;
+}
+@mixin flex-column{
+  display: flex;
+  flex-direction: column;
+}
+@mixin flex-center {
+  @include flex-row;
+  justify-content: center;
+  align-items: center;
+}
+@mixin  flex-row-between{
+  @include flex-row;
+  justify-content: space-between;
+  align-items: center;
+}
+@mixin  flex-row-around{
+  @include flex-row;
+  justify-content: space-around;
+  align-items: center;
+}
+@mixin  flex-row-end{
+  @include flex-row;
+  justify-content: flex-end;
+  align-items: center;
+}
+// 注意一下这里，列式布局时文字常常可能需要左对齐，所以没做align-items的处理，
+// 有需要自己在项目里添加
+@mixin  flex-column-between{
+  @include flex-column;
+  justify-content: space-between;
+}
+@mixin  flex-column-around{
+  @include flex-column;
+  justify-content: space-around;
+}
+@mixin  flex-column-center{
+  @include flex-column;
+  justify-content: center;
+  align-items: center;
+}
