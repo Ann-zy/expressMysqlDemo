@@ -3,7 +3,7 @@
 
 const express = require('express')
 const cors = require('express')
-const { conMysql } = require('./mysql')
+const apiRouter = require('./routes')
 
 const app = express()
 app.use(cors())
@@ -19,26 +19,7 @@ app.use(multiparty())
 // 处理 application/json
 app.use(bodyParser.json())
 
-class Response {
-    constructor(isSucceed, msg, code, data) {
-        this.isSucceed = isSucceed
-        this.msg = msg
-        this.code = code
-        this.data = data
-    }
-}
-
-app.get('/test', (req, res, next) => {
-    res.send('测试用的接口')
-})
-
-// 一个简单的接口，查询数据库中的所有用户信息
-app.get('/getUser', (req, res, next) => {
-    let sql = 'select * from user'
-    conMysql(sql).then((result) => {
-        res.send(result)
-    })
-})
+app.use('/user', apiRouter)
 
 app.listen(3000, () => {
     console.log('恭喜你，服务器启动成功!')

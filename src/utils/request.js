@@ -1,8 +1,7 @@
 import axios from "axios";
-import Vue from "vue";
 import { showFailToast } from 'vant';
 import { host } from "@/global-config";
-import store from "../store";
+// import store from "../store";
 
 // create an axios instance
 const service = axios.create({
@@ -17,19 +16,10 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   (config) => {
-    // config.headers.token = "sv3jigc9eft3s2tksca6kth6iqq1haih30";
     // 添加token进header
-    if (store.getters.getLoginInfo) {
-      config.headers.token = store.getters.getLoginInfo.token;
-    }
-
-    if (config.isLoading) {
-      Vue.prototype.$toast.loading({
-        duration: 30000,
-        loadingType: "spinner",
-        forbidClick: true,
-      });
-    }
+    // if (store.getters.getLoginInfo) {
+    //   config.headers.token = store.getters.getLoginInfo.token;
+    // }
     return config;
   },
   (error) => {
@@ -43,10 +33,6 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response) => {
     const { code, data } = response.data;
-
-    if (response.config.isLoading) {
-      Vue.prototype.$toast.clear(true);
-    }
 
     if (![0, "0"].includes(code)) {
       showFailToast({

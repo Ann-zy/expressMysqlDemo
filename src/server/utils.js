@@ -14,4 +14,4 @@ async function RunSQL(sql) {
         })
     })
 }
-global.RunSQL = RunSQL
+exports.RunSQL = RunSQL

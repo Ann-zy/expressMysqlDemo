@@ -5,7 +5,7 @@ const VConsolePlugin = require('vconsole-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postcssPluginPx2rem = require('postcss-plugin-px2rem');
 
-const baseUrl = 'https://t-fssaas.lepass.cn';
+const baseUrl = 'http://localhost:3000/';
 let publicPath = '/zzg-yard-restaurant/';
 if (process.env.NODE_ENV === "production") {
   if (process.env.CUSTOM_ENV === "dev") {
@@ -30,13 +30,6 @@ module.exports = {
     port: "8080", // 代理端口
     open: true, // 项目启动时是否自动打开浏览器
     proxy: {
-      '/business/': { // 代理api
-        target: baseUrl, // 服务器api地址
-        changeOrigin: true, // 是否跨域
-        // pathRewrite: { // 重写路径
-        //     "^/admin": ''
-        // }
-      },
       '/': { // 代理api
         target: baseUrl, // 服务器api地址
         changeOrigin: true, // 是否跨域
@@ -44,6 +37,13 @@ module.exports = {
         //     "^/admin": ''
         // }
       },
+      // '/user': { // 代理api
+      //   target: baseUrl, // 服务器api地址
+      //   changeOrigin: true, // 是否跨域
+      //   // pathRewrite: { // 重写路径
+      //   //     "^/admin": ''
+      //   // }
+      // },
     },
   },
   configureWebpack: (config) => {

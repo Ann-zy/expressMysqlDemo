@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
     zzgHost = 'https://zzgfs.leshuazf.com';
   }
 } else {
-  host = "http://localhost:8686/";
+  host = "http://localhost:8080/";
   // host = "http://10.20.58.36:8084/";
   // http://localhost:8082/
   // h5host = 'https://t-h5.lepass.cn';

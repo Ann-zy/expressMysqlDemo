@@ -4,7 +4,6 @@ const mysqlConfig = require('./db')
 const mysql = require('mysql')
 
 function conMysql(sql) {
-    console.log(mysqlConfig.mysql)
     const db = mysql.createConnection(mysqlConfig.mysql)
 
     db.connect((err) => {

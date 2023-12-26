@@ -20,19 +20,30 @@
                     :rules="[{ required: true, message: '请填写密码' }]"
                 />
             </div>
+            <van-button class="btn login" @click="goLogin">登陆</van-button>
+            <van-button class="btn register" @click="goRegister">注册</van-button>
         </div>
     </div>
 </template>
 <script setup>
 import { ref } from 'vue';
-// import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const userForm = ref({
     username: '',
     password: ''
 })
 
-userForm.value.username = 'wjk'
+userForm.value.username = ''
+const goLogin = () => {
+
+}
+const goRegister = () => {
+    router.push({
+        path: '/register',
+    })
+}
 
 </script>   
 <style lang="scss" scoped>
@@ -56,6 +67,23 @@ userForm.value.username = 'wjk'
             text-align: center;
             font-size: 60px;
             font-weight: 550;
+        }
+    }
+    .btn{
+        & + div{
+            margin-top: 30px;
+        }
+        margin-left: 20px;
+        width: 560px;
+        height: 70px;
+        border-radius: 10px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        text-align: center;
+        font-size: 32px;
+        font-weight: 500;
+        &.login{
+            background: #2bb9d5;
+            color: #FFFFFF;
         }
     }
 }

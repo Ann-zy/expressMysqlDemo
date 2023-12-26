@@ -14,6 +14,14 @@ const routes = [
             title: '登录',
         },
     },
+    {
+        name: '/register',
+        path: '/register',
+        component: () => import(/* webpackChunkName: "entry" */ '@/views/login/register.vue'),
+        meta: {
+            title: '注册用户',
+        },
+    },
 ];
 const router = createRouter({
     history: createWebHashHistory(),

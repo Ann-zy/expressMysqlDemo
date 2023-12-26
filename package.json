@@ -22,7 +22,8 @@
     "vant": "^4.8.1",
     "vconsole-webpack-plugin": "^1.8.0",
     "vue": "^3.0.0",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.15",
