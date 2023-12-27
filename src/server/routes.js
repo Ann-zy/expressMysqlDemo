@@ -23,10 +23,17 @@ router.get('/getUser', (req, res) => {
 })
 
 router.post('/addUser', (req, res) => {
-    let sql = 'select * from user'
+    const { username, password } = req.body
+    let sql = `select * from user where password = '${username}'`
     conMysql(sql).then((result) => {
-        let response = new Response('', 0, null)
-        res.send(response)
+        if (result.length >= 1) {
+            res.send(new Response('注册失败，该用户已注册', 500, null))
+        } else {
+            sql = 'insert into user(username, password) values(?,?)'
+            conMysql(sql, [username, password]).then((insertRes) =>{
+                res.send(new Response('', 0, null))
+            })
+        }
     })
 })
 

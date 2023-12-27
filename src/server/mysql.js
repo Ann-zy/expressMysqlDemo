@@ -3,7 +3,7 @@ const mysqlConfig = require('./db')
 
 const mysql = require('mysql')
 
-function conMysql(sql) {
+function conMysql(sql, sqlParams) {
     const db = mysql.createConnection(mysqlConfig.mysql)
 
     db.connect((err) => {
@@ -15,7 +15,7 @@ function conMysql(sql) {
     })
     //因为query查询是一个异步操作，所以用promise来操作
     return new Promise((resolve, reject) => {
-        db.query(sql, (err, res) => {
+        db.query(sql, sqlParams, (err, res) => {
             if (err) {
                 reject(err)
             } else {
