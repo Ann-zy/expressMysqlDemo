@@ -32,7 +32,7 @@
 import { ref } from 'vue'
 import { addUser } from '@/api/index'
 import { showToast } from 'vant';
-// import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 
 const userForm = ref({
     username: '',
@@ -64,7 +64,12 @@ const registerUser = async () => {
         if (!checkDataHandler()) {
           return
         }
-        await addUser(userForm.value);
+        const res = await addUser(userForm.value);
+        console.log(res)
+        if (res.code === 0) {
+            showToast('注册成功！')
+            useRouter.go(-1)
+        }
     } catch (error) {
         console.log(error)
     }
